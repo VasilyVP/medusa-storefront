@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import "../styles/theme.css"
-import Footer from "./footer"
+//import Footer from "./footer"
 import Header from "./header/index"
 
 const Layout = ({ children }) => {
@@ -17,10 +17,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <div>
+    <div className="bg-ui-light h-full">
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
-      <Footer />
+      {/*  <Footer /> */}
+      <div />
     </div>
   )
 }

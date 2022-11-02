@@ -1,6 +1,7 @@
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
+import { Helmet } from "react-helmet"
 import CollectionPreview from "../components/categories/collection-preview"
 import ProductListItem from "../components/products/product-list-item"
 import Grid from "../components/utility/grid"
@@ -13,30 +14,33 @@ const IndexPage = ({ data }) => {
   const collectionPreviews = useCollections(collections, products)
 
   return (
-    <div>
+    <div className='bg-ui-light'>
+      <Helmet>
+        <link rel="icon" type="image/x-icon" href="https://assets-global.website-files.com/61e8ddf1172709663d19c3b4/622ad2941c5d76ca2369e4e9_barneyface_favicon_32.png" />
+      </Helmet>
       <SearchEngineOptimization title="Home" />
-      <div className="bg-ui-light pb-12 lg:pb-0 w-full px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col lg:flex-row items-center max-w-screen-2xl mx-auto">
+      <div className="bg-ui-light pb-12 lg:pb-0 w-full flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-1">
+        <div className="relative w-9/12"> {/* max-w-screen-2xl mx-auto */}
           <StaticImage
-            src="../images/hero-merch.png"
+            src="https://assets-global.website-files.com/61e8ddf1172709663d19c3b4/61f5a1d1154ef76dff4e2632_barneybed_hero.jpg"
             alt="A black Medusa hoodie and a white Medusa coffee mug"
             placeholder="tracedSVG"
-            className="w-full lg:w-1/2 h-auto"
+            className="w-full h-auto rounded-sm" /* lg:w-1/2 */
           />
-          <div>
-            <h1 className="text-4xl">CLAIM YOUR MERCH</h1>
-            <p className="mt-2 text-lg font-normal">
-              Contribute to Medusa and receive free merch
-              <br />
-              as a token of our appreciation
+          <div className="absolute bottom-16 right-16">
+            {/* <h1 className="text-4xl">Cools</h1> */}
+            <p className="mt-2 text-lg font-normal text-[#e9eae5]">
+              Explore for your friend comfort
             </p>
-            <button className="btn-ui mt-4 min-w-full lg:min-w-0">
-              Learn more
-            </button>
+            <div className="flex justify-end">
+              <button className="btn-ui bg-[#e9eae5] text-[#636363] border-transparent mt-4 min-w-full lg:min-w-0" onClick={() => navigate('/products')}>
+                To soft beds
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div className="layout-base my-12 min-h-0">
+      <div className="layout-base my-12 min-h-0 w-9/12">
         <Grid
           title={"Featured"}
           cta={{ to: "/products", text: "Browse all products" }}
@@ -45,7 +49,7 @@ const IndexPage = ({ data }) => {
             return <ProductListItem product={p} key={p.handle} />
           })}
         </Grid>
-        <div className="mt-12">
+        {/* <div className="mt-12">
           <Grid
             title="Shop by collection"
             cta={{ to: "/collections", text: "Browse all collections" }}
@@ -59,7 +63,7 @@ const IndexPage = ({ data }) => {
               )
             })}
           </Grid>
-        </div>
+        </div> */}
       </div>
     </div>
   )

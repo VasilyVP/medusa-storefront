@@ -1,12 +1,13 @@
-import { Link } from "gatsby"
-import React, { useState } from "react"
-import Logo from "../../icons/logo.svg"
-import AccountPopover from "./account-popover"
+//import { Link } from "gatsby"
+import React/* , { useState } */ from "react"
+import Logo from "./logo"
+import Navigation from './navigation'
+//import AccountPopover from "./account-popover"
 import Banner from "./banner"
-import CartPopover from "./cart-popover"
+/* import CartPopover from "./cart-popover"
 import HeaderLink from "./header-link"
 import MobileMenu from "./mobile-menu"
-import RegionPopover from "./region-popover"
+import RegionPopover from "./region-popover" */
 
 const mockData = {
   customer: {
@@ -83,56 +84,16 @@ const mockData = {
 }
 
 const Header = () => {
-  const [open, setOpen] = useState(false)
+  //const [open, setOpen] = useState(false)
+
   return (
     <div className="sticky top-0 z-20">
-      <header className="relative bg-white">
+      <header className="relative bg-ui-light">
         <Banner />
-        <MobileMenu open={open} setOpen={setOpen} />
-        <nav
-          aria-label="Top"
-          className="px-4 sm:px-6 lg:px-8 border-b border-ui-medium flex items-center justify-between"
-        >
-          <div className="flex items-center">
-            <div className="h-16 flex items-center">
-              <button
-                type="button"
-                className="bg-white p-2 lg:hidden"
-                onClick={() => setOpen(true)}
-              >
-                <span className="sr-only">Open menu</span>
-                <svg
-                  className="w-4 h-4 black"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                </svg>
-              </button>
-
-              <div className="ml-4 flex lg:ml-0 lg:mr-8">
-                <Link to="/">
-                  <img className="h-8 w-auto" src={Logo} alt="" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="hidden lg:flex lg:items-center">
-              <div className="hidden flex-grow items-center justify-center lg:flex text-sm font-medium">
-                <HeaderLink to="/products" text="Products" />
-                <HeaderLink to="/collections" text="Collections" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-end">
-            <div className="hidden lg:flex">
-              <RegionPopover regions={mockData.regions} />
-              <AccountPopover customer={mockData.customer} />
-            </div>
-            <CartPopover cart={mockData.cart} />
-          </div>
-        </nav>
+        {/* <MobileMenu open={open} setOpen={setOpen} /> */}
+        <Logo />
+        <Navigation />
+        <hr className='mt-2 border-solid border-1 border-[#d4d4d4]' />
       </header>
     </div>
   )

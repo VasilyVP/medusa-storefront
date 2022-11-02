@@ -1,8 +1,13 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   future: {},
   content: ["./src/**/*.{js,jsx,ts,tsx,vue}"],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Montserrat', 'sans-serif', ...defaultTheme.fontFamily.sans],
+      },
       fontSize: {
         "2xs": "0.5rem",
       },
